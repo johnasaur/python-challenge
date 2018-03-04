@@ -4,3 +4,54 @@ with open('election_data_2.csv') as csvfile:
     for row in readcsv:
       print(row)
 
+import os
+polls = os.path.join('election_data_2.csv')
+
+voter_id = []
+candidate = ["Khan", "Li", "Correy", "O'Tooley"]
+county = ["Marsh", "Trandee", "Queen", "Bamoo", "Raffah"]
+population = 1048575
+beg_voter_id = 10000003
+end_voter_id = 19999993
+
+# generate random weights for counties and candidates
+import random
+def weighted_candidate_choice(vote_weights):
+    totals = []
+    votes_total = 0
+
+#retrieve a random voting sample to generate all voter IDs
+voter_id = random.sample(range(beg_voter_id, end_voter_id), population)
+
+#retrieve votes given to the candidates
+candidate_votes = zip(candidates, vote_weights)
+votes_count = []
+
+# shuffle votes
+for candidate in candidate_votes:
+    votes_count = votes_count + int(candidate[1] * population) * [candidate[0]]
+
+random.shuffle(votes_count)
+
+# retrieve votes from the counties
+county_votes = zip(counties, vote_weights)
+votes_count1 = []
+
+# shuffle votes for 2 indexes
+for county in county_votes:
+    votes_count1 = votes_count1 + int(county[1] *population) * county[0]
+    
+random.shuffle(votes_count1)
+
+# tie all data together
+all_election = zip (votes_count1, votes_count, voter_id)
+
+# write it back to csv
+with open("election_data_2.csv", "w", newline="") as electionfile:
+    writer = csv.writer("election_data_2.csv")
+    writer.writerow = (["Voter ID", "County", "Candidate"])
+    writer.writerows = (allelection)
+    
+
+
+
