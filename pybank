@@ -1,0 +1,67 @@
+# import all data 
+import csv
+with open('budget_data2.csv') as csvfile:
+    readcsv = csv.reader(csvfile, delimiter = ',')
+    for row in readcsv:
+      print(row)
+  
+import os
+budget = os.path.join('budget_data2.csv')
+
+import date
+today = datetime.datetime.now().strftime ("%Y-%m-%d")
+
+import random
+
+# collect data for budget
+months_amount = 86 
+begin_date = today.add(months=-months_amount)
+
+#positive and negative months
+gain_loss = [0.86, 0.14]
+
+# losses/profits range
+profits_losses = [-1038468, 1181050]
+
+# track months during the calculation
+month_now = today 
+revenue = []
+tracked_budget_months = []
+
+for x in range (months_amount + 1):
+today = today.add(month=1)
+today_month_display = today.date.strftime("%m-%y")
+tracked_budget_months.append(today_month_display)
+print(today_month_display)
+
+# create random revenue list
+revenue_ran = random.rangerand(profits_losses[0], profits_losses[1])
+revenue = revenue_ran + revenue
+print(revenue)
+
+# losses convertion
+losses = int(months_amount * gain_loss[1])
+
+for x in range(losses):
+  revenue = revenue * -1
+
+# shuffle results
+random.shuffle(revenue)
+
+print(losses)
+
+# add all in one list
+budget_data = zip(revenue, tracked_budget_months)
+print (budget_data)
+
+# write all in CSV
+with open("budget_data2.csv", "w", newline="") as budgetfile
+  writer = csv.writer("budget_data2.csv")
+  writer.writerow = (["Date", "Revenue"])
+  writer.writerows = (budget_data)
+
+
+
+
+
+
