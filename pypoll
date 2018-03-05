@@ -1,3 +1,4 @@
+# import data
 import csv
 with open('election_data_2.csv') as csvfile:
     readcsv = csv.reader(csvfile, delimiter = ',')
@@ -7,6 +8,9 @@ with open('election_data_2.csv') as csvfile:
 import os
 polls = os.path.join('election_data_2.csv')
 
+import random
+
+# define variables
 voter_id = []
 candidate = ["Khan", "Li", "Correy", "O'Tooley"]
 county = ["Marsh", "Trandee", "Queen", "Bamoo", "Raffah"]
@@ -14,11 +18,9 @@ population = 1048575
 beg_voter_id = 10000003
 end_voter_id = 19999993
 
-# generate random weights for counties and candidates
-import random
-def weighted_candidate_choice(vote_weights):
-    totals = []
-    votes_total = 0
+# weights for random generation
+weights_for_candidates = ["Khan": 0.63, "Li": 0.14, "Correy": 0.20, "O'Tooley": 0.03]
+weights_for_county = ["Marsh": 0.64, "Trandee": 0.03, "Queen": 0.20, "Bamoo": 0.09, "Raffah": 0.03]
 
 #retrieve a random voting sample to generate all voter IDs
 voter_id = random.sample(range(beg_voter_id, end_voter_id), population)
