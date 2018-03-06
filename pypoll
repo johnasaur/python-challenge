@@ -41,7 +41,7 @@ votes_count1 = []
 
 # shuffle votes for 2 indexes
 for county in county_votes:
-    votes_count1 = votes_count1 + int(county[1] *population) * county[0]
+    votes_count1 = votes_count1 + int(county[1] * population) * county[0]
     
 random.shuffle(votes_count1)
 
@@ -53,7 +53,19 @@ with open("election_data_2.csv", "w", newline="") as electionfile:
     writer = csv.writer("election_data_2.csv")
     writer.writerow = (["Voter ID", "County", "Candidate"])
     writer.writerows = (allelection)
-    
+
+print("Election Results")
+print("---------------------------")
+print("Total Votes: " + str(candidate_votes))
+print("---------------------------")
+print("Khan: " + str(votes_count, votes_count1))
+print("Li: " + str(votes_count, votes_count1))
+print("Correy: " + str(votes_count, votes_count1))
+print("O'Tooley: " + str(votes_count, votes_count1))
+print("----------------------------")
+print("Winner: " + str(votes_count["candidate"][0])
+
+
 
 
 
