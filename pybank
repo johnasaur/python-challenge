@@ -50,6 +50,11 @@ random.shuffle(revenue)
 
 print(losses)
 
+# average
+def mean(profits_losses):
+    return float(sum(profits_losses)) / max(len(profits_losses), 1)
+print(profits_losses)
+
 # add all in one list
 budget_data = zip(revenue, tracked_budget_months)
 print (budget_data)
@@ -60,8 +65,12 @@ with open("budget_data2.csv", "w", newline="") as budgetfile
   writer.writerow = (["Date", "Revenue"])
   writer.writerows = (budget_data)
 
-
-
+print("Financial Analysis")
+print(----------------------------------------)
+print("Total Months: " + str(months_amount))
+print("Average Revenue Change: " + str(profits_losses)
+print("Greatest increase in revenue: " + str(revenue)
+print("Greatest decrease in revenue: " + str(losses)
 
 
 
