@@ -13,7 +13,7 @@ with open(poll_file, "r") as csvfile:
 next(csvread, None)
 
 # tie poll data with file for import os
-poll_file1 = os.path.join("raw_data", "election_data_" + str(poll_file) + ".csv")
+poll_file1 = os.path.join("PyPoll", "election_data_" + str(poll_file) + ".csv")
 
 # set all votes to 0 start count and add poll count dictionary
 all_votes = 0
@@ -56,7 +56,7 @@ winning_candidate = list_of_winners[0]
  # print(list_of_winners)
 
 # print output to file to read
-fileoutput = os.path.join("not_raw_data", "results_", str(poll_file) + ".txt")
+fileoutput = os.path.join("PyPoll", "results_", str(poll_file) + ".txt")
 
 print("Election Results")
 print("---------------------------")
