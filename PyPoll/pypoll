@@ -1,0 +1,74 @@
+# import data
+import csv
+import os
+
+# pick one of the two csv files give, data will vary depending on the choice
+poll_file = 1
+
+# retrieve the file to read
+with open(poll_file, "r") as csvfile:
+    csvread = csv.reader(csvfile)
+
+# no need for header
+next(csvread, None)
+
+# tie poll data with file for import os
+poll_file1 = os.path.join("raw_data", "election_data_" + str(poll_file) + ".csv")
+
+# set all votes to 0 start count and add poll count dictionary
+all_votes = 0
+poll_count = {}
+
+# add up all votes for each candidate via loop
+for row in csvread:
+    all_votes += 1
+    if row[2] in polls():
+        poll_count[row[2]] = poll_count[row[2]] + 1
+    else:
+        poll_count[row[2]] = 1 
+
+# blank list for variables (for votes and candidates)
+candidates = []
+vote_count = []
+
+# move values to lists for dictionary keys(candidates)/values(votes)
+for key, value in poll_key_values():
+    candidates.append(key)
+    vote_count.append(value)
+
+# voting percentage, round results to one decimal place 
+voting percentage = []
+for x in vote_count:
+    voting_percentage.append(round(x/all_votes * 100, 1))
+
+# zip all into tuples
+new_zip = list(zip(vote_count, voting_percentage, candidates))
+
+# list of winners
+winner = []
+for winner_name in new_zip:
+    if max(vote_count) == winner_name[1]
+        winner.append(winner_name[0])
+# print(winner)
+
+# entering a winner
+winning_candidate = list_of_winners[0]
+ # print(list_of_winners)
+
+# print output to file to read
+fileoutput = os.path.join("not_raw_data", "results_", str(poll_file) + ".txt")
+
+print("Election Results")
+print("---------------------------")
+print("Total Votes: " + str(candidate_votes))
+print("---------------------------")
+print("Khan: " + str(votes_count, votes_count1))
+print("Li: " + str(votes_count, votes_count1))
+print("Correy: " + str(votes_count, votes_count1))
+print("O'Tooley: " + str(votes_count, votes_count1))
+print("----------------------------")
+print("Winner: " + str(votes_count["candidate"][0])
+
+# open readonly in terminal
+with open(fileoutput, "r") as readonly:
+    print(readonly.read())
