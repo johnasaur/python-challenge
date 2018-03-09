@@ -1,1 +1,62 @@
 
+# import data
+import csv
+import os
+
+# pick one of the two csv files give, data will vary depending on the choice
+budget_file = 1
+
+# retrieve os file to read os
+bank_file = os.path.join("PyBank", "budget_data_" + str(budget_file) + ".csv")
+
+# blank list for months and revenues
+months_amount = []
+revenue = []
+
+# retrieve the file to read csv
+with open(budget_file, "r") as csvfile:
+    csvread = csv.reader(csvfile)
+
+# no need for header
+next(csvread, None)
+
+# add up all rows via loop sans header
+for rows in csvread:
+    months_amount.append(row[0])
+    revenue.append(int(row[1]))
+
+# find all months
+all_months = len(months_amount)
+
+# need max/min variables for revenue, equate to first line
+most_inc = revenue[0]
+most_dec = revenue[0]
+all_revenue = 0
+
+# compare most increased and most decreased each month; need to total the revenue 
+for y in range(len(revenue)):
+    if revenue[y] >= most_inc:
+        most_inc = revenue[y]
+        most_inc_month = months_amount[y]
+    elif revenue [y] <= most_dec:
+        most_dec = revenue[y]
+        most_dec_month = months_amount[y]
+    all_revenue += revenue[y]
+
+    #average change in revenue
+    average = all_revenue/all_months
+
+    #print output to a file to read
+    file_output = os.path.join("PyBank", "budget_final_" + str(budget_file) + ".txt")
+
+
+print("Financial Analysis")
+print(----------------------------------------)
+print("Total Months: " + str(months_amount))
+print("Average Revenue Change: " + str(average)
+print("Greatest increase in revenue: " + inc_revenue_each_month + ('$' + str(inc_revenue))
+print("Greatest decrease in revenue: " + dec_revenue_each_month + ('$' + str(dec_revenue))
+
+# open read only file in terminal
+with open(file_output, "r") as readonly:
+    print(readonly.read())
